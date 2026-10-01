@@ -6,3 +6,6 @@ praesentationen/_brief/assets.md
 praesentationen/assets/*.jpg
 praesentationen/assets/*.png
 praesentationen/*.html
+praesentationen/assets-real/
+praesentationen/_real/
+praesentationen/_brief/praxisarchitektur-real.md
