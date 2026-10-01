@@ -1,0 +1,7 @@
+# Interne Arbeitsdateien – Repo ist öffentlich, nicht pushen
+praesentationen/_src/
+praesentationen/_shots/
+praesentationen/_brief/inhalt-*.md
+praesentationen/_brief/assets.md
+praesentationen/assets/*.jpg
+praesentationen/assets/*.png
