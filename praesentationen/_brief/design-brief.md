@@ -52,3 +52,11 @@ Playwright (Python ist installiert; Browser: `executable_path='/opt/pw-browsers/
 - Desktop 1440×900 und Mobil 390×844 (`is_mobile=True`), pro Kapitel 3 Scroll-Stände (Anfang/Mitte/Ende, `behavior:'instant'`), Screenshots nach `praesentationen/_shots/<deck>/`.
 - Jeden Screenshot ansehen (Read-Tool). Prüfen: bewegt sich die Szene zwischen den Ständen sichtbar? Überlappungen? Leere Flächen? Lesbarkeit? Konsolenfehler = 0.
 - Danach `audit-ai-design-slop` und Hallmark-Slop-Test; Funde beheben; erneut screenshotten.
+
+## Orchestrator-Entscheidungen zu Widersprüchen (01.10.2026)
+- Agentenrollen: aktuelles Register (03.08.2026) aus `inhalt-*.md` ist maßgeblich. Wo das alte Team-Deck abweicht (z. B. Felix), Register-Fassung nehmen. Porträts: `assets/agent-<name>-<tier>.jpg`, donald-eule, robert-falke, karl-heinz-biber. Karl-Heinz und Ivan teilen dasselbe Biber-Motiv → Ivan ohne Bild oder nur Initiale.
+- Keine Menschenfotos, keine Avatare echter Personen. Menschen (Vincent, Patricia, Christina, Gregor, Lukas) nur als Name + Rolle in Typografie.
+- OpenAI-Modelle: „GPT-6 Astra“, „GPT-6 Sol“, „GPT-6 Luna“ (keine Versionsnummer 6.1). Anthropic: Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 4.5. Keine offiziellen Launch-Bilder verwenden; Himmel/Sonne/Mond selbst prozedural zeichnen und als „unsere Bildsprache“ behandeln, nicht als OpenAI-Material.
+- Dark-Cockpit-Mockup: keine Platzhalterzahlen oder IDs übernehmen; Dashboard-Module als eigene, saubere Nachzeichnung mit erfundenen, klar synthetischen Beispielinhalten („Beispiel“-Label).
+- Anrede: „Team“ / „Empfang & Assistenz“, nicht „Mädels“.
+- Unbelegtes (z. B. News-Research als Praxisfunktion) ehrlich als „geplant“ oder „Vincents persönliches Werkzeug“ markieren.
