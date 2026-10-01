@@ -150,7 +150,7 @@ Länge: 9 Szenen in 7 Sektionen, 33.300 px = 37 Viewport-Höhen (bewusst länger
 | „Load progressively … first authored frame complete“ | Erster Frame: Ring + Titel + Poster-Kopf sofort aus DOM, WebGL-Kopf ersetzt das Poster, sobald Three importiert ist. |
 | „Dispose …“ | Einmalige Instanz über die gesamte Lebensdauer, Reparenting entfällt (Canvas fix, `opacity`). |
 | „Use local, pinned Three.js files“ (scroll-world-storytelling) | `three@0.169.0` per `npm pack`, `three.module.min.js` als `<script type="text/plain">`, per Blob-URL importiert. Kein CDN. |
-| Geometrie: „Establish the large silhouette first“ | `levels.json` aus dem echten Logo-Kopf (Rasterisierung der 45 Dreiecke, Douglas-Peucker → 18 Ebenen), Querschnitts-Sweep mit Ellipsen (14 Segmente, halber Versatz je Ring → Dreiecksnetz). Profil deckt sich mit dem Ring-Logo. |
+| Geometrie: „Establish the large silhouette first“ | Rev. 2: Vorderfläche = die 44 echten Dreiecke/Vielecke des Logo-Pfads (`data-tiles`, aus `dkc-logo-white.svg`), Tiefe je Eckpunkt = Kuppel über dem Abstand zur Silhouette (`domeZ`, 0 an der Kontur, max 46), gespiegelte Rückseite, Kontur schließt den Körper. Goldene Kanten = die Original-Kanten. Frontansicht = Logo (kongruent), 3/4-Ansicht zeigt Tiefe. Die erste Fassung (Querschnitts-Sweep, Ringraster) wurde auf Owner-Feedback verworfen. |
 | Licht: „one authored key direction … rim“ | Warmes Key `uKey` links oben vorn, kühles Rim `uRim` von hinten rechts (Fragment-Shader), Facetten flach schattiert, goldene Kanten (LineSegments, gleicher Vertex-Shader, damit Kanten mit den Blenden wandern). |
 
 ## 5. scroll-world-storytelling
@@ -242,7 +242,7 @@ Methode: jeden Satz auf Füllwörter, Adverbien, Passiv, „nicht X, sondern Y�
 | Satz (final) | Befund → Änderung |
 |---|---|
 | „Unser digitales Praxisteam. Dieser Rundgang zeigt, was heute schon läuft, an den echten Bildschirmen.“ | Aktiv, konkret, kein Adjektivstapel; „echt“ ist hier ein Fakt. |
-| „Das ist euer Cockpit. Jeden Morgen um 08:00 frisch.“ | Storyboard-Vorgabe, aktiv, konkret, bleibt. |
+| „Das ist euer Cockpit.“ + „Der Tagesplan kommt jeden Morgen frisch aus SoftDent.“ | Rev. 2: „08:00“ gestrichen (nicht im Bild belegt, der Screenshot zeigt „Stand 08:01“). Aktiv, konkret. |
 | „Oben stehen die Zahlen des Tages.“ | Ort + Sache, kein Staging („Auf einen Blick“ vermieden). |
 | „Der Tagesplan zeigt alle acht Räume.“ / „Im Team-Board hakt ihr Aufgaben ab.“ | Menschliches Subjekt „ihr“. |
 | „Donald antwortet auf Fragen.“ + „Er liest die Praxisplanung. Änderungen prüft er per Read-back.“ | Zitat der echten Oberfläche, keine Dramatisierung. |
@@ -283,3 +283,13 @@ Geprüft: `_shots/team-v2/d-*.png` (1440×900, 36 Stände), `m-*.png` (390×844,
 | P3 | Quality defect | Helfer: Netz klein, Donald von vorderen Agenten verdeckt | `e300` | Tiefe unklar | Zwei geneigte Umlaufbahnen (Pitch .5) statt Kugel, größerer Radius. |
 Offen / unbekannt: (a) Gate 24 (4-px-Skala) bewusst nicht erfüllt, fluide Abstände. (b) Mobil-Frame-Rate nur in Headless/SwiftShader geprüft, keine Gerätemessung. (c) Rail-Szene hat im oberen Drittel Leerraum; als Weißraum belassen. 
 **Größte verbleibende Verbesserung:** Prüfung auf einem echten iPhone/Android mit Touch-Scrub (verify.md, „The phone is a different machine“).
+
+### Revision 2 (Orchestrator-QA, 01.10.2026): zusätzliche Befunde und Fixes
+| Priorität | Muster | Fix |
+|---|---|---|
+| P1 | 3D-Kopf als regelmäßiges Ringraster, Logo-Dreiecke verloren | Neu aus den echten Logo-Dreiecken mit Kuppeltiefe (siehe Abschnitt 4). Hero-Ring größer (Kopf ca. 55 vh bei 1440×900, begrenzt durch die Ringbreite; größer würde den Ring vom Kopf lösen). Poster/Fallback zeigt jetzt die Dreiecke statt einer flachen Silhouette (der Umriss war fälschlich als 45. Fläche gezeichnet). |
+| P1 | Cockpit-Einstieg: halbtransparentes graues Band, fast unsichtbarer Text | Band ist ein volles Petrol-Panel, das per Transform hochfährt (Opacity 1), Zeilen blenden in 12 vh voll ein. Cockpit-Ebene auf Petrol, Bild per Cover/Contain. Band 22 % der Höhe. |
+| P1 | Ansichten (OP-Plan, Material, Implantate) klein | Karten bis 80 % Breite (Desktop), 1,85× Viewport mobil, Tiefenstaffel mit z-index. |
+| P1 | Graph spärlich, getrennte Inseln | Alle 2171 Knoten und 2519 Kanten, networkx `spring_layout` 3D (seed 11) offline, unsichtbare Verbindungsknoten nur im Layout, Radial-Kompression, 40 Hub-Labels, füllt ca. 75 % der Fläche. |
+| P1 | Rails: graue Platte beim Einstieg | Alle Bühnen ab S4 sind jetzt deckend in ihrer Kapitelfarbe (saubere Seitenwechsel), Logo-Netz als ferne Ebene je Bühne, Dateinamen größer (bis 1,7 rem). |
+| P2 | Behauptung „08:00“ im Cockpit | Ersetzt durch „Der Tagesplan kommt jeden Morgen frisch aus SoftDent.“ |
