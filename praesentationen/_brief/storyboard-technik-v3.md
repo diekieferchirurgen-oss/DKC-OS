@@ -1,0 +1,38 @@
+# Storyboard „KI-Werkzeugkasten“ v3 — Owner-Vorgaben 02.10.2026 (verbindlich)
+
+Interne Fortbildung. Kein Quellen-Apparat.
+
+## Strikt verboten (Owner-Kritik v2)
+- KEINE „Beleg“-Zeilen, keine Dateinamen/Quellenangaben auf Folien, kein Kolophon/Quellenverzeichnis, kein „Stand Fritzens …“, kein „alles in diesem Deck ist belegt“.
+- Kein eigener Gitter-/Draht-Kopf. Logo = das echte Logo (`assets/dkc-logo-white.svg`) + der 3D-Kopf aus dem Team-Deck (`_src/team-v2/` Geometrie aus den 44 echten Logo-Dreiecken, Petrol-Flächen, Gold-Kanten) — 1:1 übernehmen.
+- Keine Chronologie („Zwei Familien, ein Herbst“ raus), keine Benchmark-Tabellen, keine Review-Dokument-Zitate („Antwort an Opus“ raus), kein „Im Zweifel Sonnet …“-Merksatz.
+- Keine generischen Einfarb-Flächen (grün/weiß/gelb) als Szenenhintergrund ohne Inhalt. Hintergründe = echte Bildwelten (Launch-Art, echte UIs) in mehreren Ebenen, oder Obsidian-Dunkel.
+
+## Szenen
+1. **Titel**: echtes Logo, 3D-Kopf (Team-Deck-Geometrie) dreht beim Scrollen. „KI-Werkzeugkasten“. Sonst nichts.
+2. **Anthropic / Claude** — von oben nach unten, je ein Kapitel, Original-Launch-Art als mehrschichtige Bühne (scroll-craft hero-depth: ferne Ebene = Launch-Bild mit langsamer Parallaxe + Zoom, mittlere = Modellname groß, nahe = Aufgaben):
+   - **Haiku 4.5** — schnell, günstig: kurze Fragen, Texte einordnen, Massenaufgaben. Bildwelt: `launch/anthropic/claude_haiku_*.jpg` / Haiku-Seite.
+   - **Sonnet 5.5** — Alltag, Agenten, Code im Tagesgeschäft; 30 % schneller als Sonnet 5. Bild: `claude-sonnet-5-5_10.jpg` (Erde durchs Fenster) + `_8/_9` (Messinstrumente).
+   - **Opus 5.5** — gründlich, lange Aufgaben, Planen, Prüfen; auf Fable-Niveau bei vielen Aufgaben, in mehreren Bereichen besser, 40 % günstiger. Bild: `claude-opus-5-5_10.jpg` (Sonnenaufgang über der Erdoberfläche) + `_2/_3/_4/_9` als Tiefenebenen.
+   - **Fable 5.1** — das Frontier-Modell, für die härtesten Fälle, langsamer und teurer. Bild: `claude-fable-and-mythos-5-1_6.jpg` (Himmel/Wolken). KEINE Proteinschleife, kein „Overall hit rate“.
+   - Abschluss: „Welches Modell wofür“ als kurze Zuordnung Aufgabe → Modell (nicht als Merksatz-Pyramide), Opus 5.5 als häufige erste Wahl für Wichtiges.
+3. **OpenAI / GPT-6** — von klein nach groß: **Luna → GPT-6.1 Sol → Astra**. Bildwelt = Original-Visuals von openai.com (Mond, Sonne, Sternenhimmel), sobald `assets-real/launch/openai/` befüllt ist (Netzwerk). Bis dahin: Szene vollständig gebaut, Bild-Ebene liest aus `assets-real/launch/openai/{luna,sol,astra}.*`; fehlt die Datei, Szene typografisch auf Nacht OHNE nachgebaute Himmelskörper. Fakten: Luna 0,10 $/0,50 $ pro Mio. Token, Masse/Zusammenfassen; GPT-6.1 Sol (DevDay 29.09.2026) 2 $/10 $, gecachter Input 0,10 $, fast Astra-Niveau bei Code/Agenten zu einem Fünftel des Preises, bei uns Motor von Hermes/Donald; Astra = Flaggschiff (seit 04.09.).
+4. **Token, Eingabe, Ausgabe, Kontext** — erklären: Ein Token ist ein Textstück, im Deutschen grob eine Silbe bzw. ¾ Wort; 1 Mio. Token ≈ 750.000 Wörter Englisch, im Deutschen weniger. Eingabe-Token = was ich schicke (Frage + Dateien), Ausgabe-Token = was zurückkommt (teurer), Kontext = Arbeitsgedächtnis (wie viel gleichzeitig „auf dem Tisch“ liegt, z. B. 1 Mio. Token). Animation: ein echter Satz zerfällt in Token-Kacheln, Kacheln fließen in ein Kontext-Fenster, das sich füllt; Preis-Zähler läuft mit.
+5. **CLI, API, MCP — der Reihe nach, mit vollem Namen und Bedeutung**:
+   - **CLI = Command Line Interface**: Programm per Textbefehl. Echte Terminals (`screens/real-cli/05-claude-code-help.png`, `07-codex-help.png`).
+   - **API = Application Programming Interface**: die festgelegte Tür, durch die Programme Daten holen/schreiben (Beispiele: SoftDent nur lesend, Wawibox ohne API).
+   - **MCP = Model Context Protocol**: die genormte Steckdose für KI — Stecker (Gmail, Kalender, Drive, Microsoft 365, Fireflies, PubMed) rasten animiert in eine Steckdose am Agenten ein; Unterschied: API = jeder Dienst eigene Steckdosenform, MCP = eine Norm für alle.
+   - **Wie verbinde ich etwas?**: Gibt es einen fertigen Connector → einschalten; gibt es CLI/Export → Skill; sonst Agent.
+6. **Claude bedienen** — die Desktop-App (Chat) und Claude Code mit Modellwahl pro Aufgabe. Echte Screenshots: `screens/claude-code-screenshot.png`, `real-cli/06-claude-code-startup.png`; Desktop-App-Bild aus `assets-real/screens/claude-app*.png` sobald vorhanden (Netzwerk) — sonst nur Claude Code. Modell-Einstellung: welche Aufgabe → welches Modell.
+7. **Hermes-Agent** — kurz das goldene Logo (`real-cli/01-hermes-startup-banner.png` bzw. `hermes-banner.png`), dann die offizielle Nous-Research-Seite (`assets-real/screens/nous-hermes*.png`, Netzwerk) bzw. die echte CLI. Erklärung: **Hermes ist das Auto, GPT ist der Motor** (bei uns GPT-6.1 Sol). **Self-Learning-Loop**: aus dem echten Hermes-Repo/README/Docs (github.com/NousResearch/hermes-agent, raw.githubusercontent erreichbar): Erinnerungen (memories), Skills, Cron — der Agent schreibt aus erledigten Aufgaben neue Skills/Notizen und wird besser. Als Kreis-Animation mit echten Begriffen aus der Doku.
+   - **Unter-Agenten fürs Routing**: Donald in der Mitte, Fachagenten mit echten Porträts (`assets-real/agents/`, Ivan dabei, keine Patricia), wandernde Impulse — dieses Wiring ist vom Owner gelobt, beibehalten und ausbauen. Kein „Agentenregister“-Text, keine Belegzeile.
+8. **Was heute läuft** — animiert, nicht als Tabelle:
+   - Belege: Foto → Ordner → Hermes benennt um (JJJJ-MM-TT_GESCHAEFT_BETRAG.pdf) → Monatsabschluss (Excel, BMD-CSV, ZIP) → Mail-Entwurf an die Steuerberaterin → Vincent prüft und sendet.
+   - Tagesplan: zeigt unsere App (echtes Cockpit `assets-real/dashboard/01-cockpit.png`, Tagesplan-Ausschnitt).
+   - Empfang: Mail-Triage, Schmerz-Alarm, Antwortentwürfe.
+9. **Lokale Modelle & Zonen** — Mac Studio animiert (echtes Foto `misc/mac-studio.jpg`, in Ebenen zerlegt/rotiert; Apple-Bilder sobald Netzwerk offen). Erklären: **Qwen** (qwen3.6:35b — Donald lokal, Hauptmodell), **Ornith** (9b/35b — Delegation, Zweitmeinung), **qwen2.5-coder** (Skripte), **Gemma 4** (26b — Reserve, warum: zweite Modellfamilie als Absicherung), Whisper (Sprache→Text), bge-m3 (Suche). Der Punkt: lokal = kein Internet → Patientendaten dürfen dorthin (**Zone A**, Mac Studio). **Zone B** = online, dort laufen unsere Agenten, auf dem **Mac mini** (Bild sobald Netzwerk; sonst nur Wort). Status ehrlich: **noch im Aufbau**.
+10. **Agentic OS in Obsidian** — NICHT graphify. Echte Vault-Daten (`assets-real/vault/vault-graph.json`, README): Obsidian-Look (dunkle Fläche, Obsidian-Graph-Optik wie `screens/obsidian-graph.png`). Animation: Vault entsteht Punkt für Punkt in echter Entstehungsreihenfolge, Linien ziehen sich; dann Zoom hinein bis einzelne Notiznamen lesbar sind; dann 3D-Rotation um den **Use-Case-Katalog** mit seinen echten Nachbarn; eine Notiz öffnet sich (echter Auszug). Dazu der Arbeitskreislauf des Agentic OS (Auftrag → Plan → Ausführen → Prüfen → Kanonisieren → Vault) als Weg, der durch den Vault läuft — alles in derselben Obsidian-Welt, kein Wechsel auf Grün.
+11. **Schluss**: Graph zieht sich zum echten Logo + 3D-Kopf zusammen. office@diekieferchirurgen.at. Keine Quellen.
+
+## Gestaltung
+Refero-/Dribbble-Niveau, Marke Petrol/Gold/Creme; Szenen mit echter Bildwelt statt Flächen. Skills: ui-ux-pro-max, hallmark (Slop-Test), scroll-craft (hero-depth, feel, uniqueness), build-threejs-scroll-worlds, scroll-scrubbed-word-reveal, emil-design-eng, animate, design-taste-frontend, no-ai-design-slop, impeccable, stop-slop, humanizer, audit-ai-design-slop. Nachweis in `_brief/skills-log-technik-v3.md` (nicht auf Folien!).
