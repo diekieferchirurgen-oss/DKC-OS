@@ -4,8 +4,8 @@ Quelltext: `_src/technik-v3/{build.py,prep.py,body.html,style.css,main.js,vault.
 
 ## Umsetzung der Owner-Vorgaben
 - Verbotsliste geprüft per Playwright (`innerText` der App plus alt/aria-label/title): kein "Beleg", "Quelle", ".png", ".jpg", ".webp", kein Kolophon, keine Chronologie, keine Benchmark-Tabelle, kein eigener Draht-Kopf. Der Einkaufs-Ablauf heißt auf der Folie "Einkauf".
-- Kopf: `assets/head.json` (44 echte Logo-Dreiecke aus `dkc-logo-white.svg`) mit demselben Shader wie `_src/team-v2/main.js` (Petrol-Flächen, Gold-Kanten). Ring aus dem echten Logo-Pfad.
-- Three.js 0.169.0: Ladereihenfolge CDN (4,5 s Timeout), danach Blob-Import des eingebetteten Moduls, danach statischer SVG-Kopf aus denselben Polygonen. Keine Klassen auf html/body, alles hängt an `#app`.
+- Logo (Stand 03.10.): die Originalpfade von `dkc-logo-white.svg` (Ring und Kopf, weiß, unverändert). In Ruhe pixelgleich zur Datei (Abgleich per Bildvergleich, nur Kantenglättung weicht ab). Bewegung nur durch Ebenen: `lines.py` leitet aus den Facetten die 112 Linien-Mittellinien ab, vier Masken zeigen je ein Viertel der Originallinien, die Ebenen driften per translateZ/translateX auseinander und kehren exakt zurück. Three.js ist aus dem Deck entfernt.
+- Keine Klassen auf html/body, alles hängt an `#app`. (Three.js wurde nach Owner-Rückmeldung zum Logo entfernt.)
 - Externe Bildplätze (`prep.py`/`build.py` lesen bei jedem Lauf): `launch/openai/{luna,sol,astra}.*`, `screens/claude-app*`, `screens/nous-hermes*`, `misc/mac-mini*`. Mit Testbildern geprüft, dass jeder Platz greift, danach entfernt. Ohne Datei: typografische Nacht (Ledger-Linien, Umrisswörter), nur Wort "Mac mini", nur Claude Code.
 - Bildaufbereitung: Titeltexte aus Fable-, Opus- und Sonnet-Launchbild per Diffusionsfüllung entfernt (`prep.py`), Haiku-Wortmarke freigestellt, Mac Studio freigestellt und in fünf Scheiben zerlegt.
 - Vault: echte Daten `assets-real/vault/vault-graph.json` (270 Notizen, 720 Links, Wachstum nach `rank`, Notiztext aus dem README, Em-Dash entfernt, Umschrift ae/ue zu Umlauten). Route durch den Vault per Breitensuche zwischen Donald, plan-current, H6-email-pipeline-plan, KIRA-Codex-Review, E38-vault-ordnerkanon und index.
@@ -25,7 +25,7 @@ Stempel im Kopf von style.css. Makrostruktur "Continuous Stage": gepinnte Bühne
 - Verifikation: je 60 gleichmäßige Scrollstände Desktop und Mobil, dazu kapitelweise Serien (`chshot.py`). Dabei gefundene Fehler: leere Vorhang-Zustände an Kapitelgrenzen (Vorhang auf 0,32 begrenzt, Inhalte ab p=0 sichtbar), überschriebene Opacity durch `cssText` (Lokal, Karte), Textüberlappung im Empfang und Tagesplan, abgeschnittene Schleifen-Beschriftung.
 
 ## build-threejs-scroll-worlds
-Ein Renderer, eine Szene; der Canvas wird in die aktive Bühne umgehängt (Titel, Schluss). Scroll-Zustand deterministisch aus `scrollY` je Kapitel (`p`), keine Wheel-Integration. DPR bei 2 gedeckelt, Resize neu vermessen, Schrift-Ladung löst Neumessung aus. Fallback ohne WebGL: statischer Kopf.
+(Nach der Logo-Korrektur ohne WebGL. Ursprünglich:) Ein Renderer, eine Szene; der Canvas wird in die aktive Bühne umgehängt (Titel, Schluss). Scroll-Zustand deterministisch aus `scrollY` je Kapitel (`p`), keine Wheel-Integration. DPR bei 2 gedeckelt, Resize neu vermessen, Schrift-Ladung löst Neumessung aus. Fallback ohne WebGL: statischer Kopf.
 
 ## scroll-scrubbed-word-reveal
 Leitsätze der Modellbühnen: TreeWalker zerlegt Textknoten in `.wd`-Spans, Leerraum bleibt erhalten, `aria-label` am Absatz, Spans `aria-hidden`. Fortschritt je Wort aus dem Kapitel-`p`. Bei reduzierter Bewegung sofort sichtbar.
